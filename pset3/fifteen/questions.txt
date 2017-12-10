@@ -1,0 +1,11 @@
+0. Besides 4 × 4 (which are Game of Fifteen’s dimensions), what other dimensions does the framework allow?
+Ans: 3D, like Rubik's Cube.
+
+1.With what sort of data structure is the game’s board represented?
+Ans: Use 2D array to represent bubble sort.
+
+2.What function is called to greet the player at game’s start?
+Ans: "Clean", "printf" and "usleep".
+
+3.What functions do you apparently need to implement?
+Ans: I should implement functions with "init", "draw", "move", "won".

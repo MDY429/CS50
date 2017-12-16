@@ -1,0 +1,48 @@
+01.  What’s stdint.h?
+Ans: This header defines a set of integral type aliases with specific width requirements, 
+     along with macros specifying their limits and macro functions to create values of these types.
+
+
+02.  What’s the point of using uint8_t, uint32_t, int32_t, and uint16_t in a program?
+Ans: uint8_t is an unsigned int of 8 bits, uint32_t is an unsigned long long, int32_t is a signed long long, and a uint16_t is an unsigned 16 bit int.
+
+
+03.  How many bytes is a BYTE, a DWORD, a LONG, and a WORD, respectively?
+Ans: BYTE:  1 byte
+     DWORD: 4 bytes
+     LONG:  4 bytes
+     WORD:  2 bytes
+
+04.  What (in ASCII, decimal, or hexadecimal) must the first two bytes of any BMP file be? 
+    Leading bytes used to identify file formats (with high probability) are generally called "magic numbers."
+ANS: The first two bytes is a bitmap with the words "BM", or the hex 0x4D42.
+
+05.  What’s the difference between bfSize and biSize?
+Ans: bfSize is entire of file size, biSize is BITMAPINFOHEADER size.
+
+06.  What does it mean if biHeight is negative?
+Ans: The height of the bitmap, in pixels. 
+     If biHeight is positive, the bitmap is a bottom-up DIB(Device-Independent Bitmaps) and its origin is the lower-left corner.
+     If biHeight is negative, the bitmap is a top-down DIB(Device-Independent Bitmaps) and its origin is the upper-left corner.
+
+07.  What field in BITMAPINFOHEADER specifies the BMP’s color depth (i.e., bits per pixel)?
+Ans: biBitCount. The number of bits-per-pixel.
+     The biBitCount member of the BITMAPINFOHEADER structure determines the number of bits that define each pixel and the maximum number of colors in the bitmap. 
+
+08.  Why might fopen return NULL in lines 24 and 32 of copy.c?
+Ans: That's mean cannot open the file. (e.g . There is no file.)
+
+09.  Why is the third argument to fread always 1 in our code?
+Ans: This is block size.
+     fread reads in from file "infile" an element of size(BITMAPFILEHEADER/BITMAPINFOHEADER/RGBTRIPLE) bytes blocks(1) number of times.
+     So just need read one time to store the bytes in a buffer pointer to by bf/bi/triple.
+
+10.  What value does line 65 of copy.c assign to padding if bi.biWidth is 3?
+Ans: 3
+
+11.  What does fseek do?
+Ans: fseek allows you to change the location of the file pointer.
+
+12.  What is SEEK_CUR?
+Ans: SEEK_CUR ia an option use in fseek to skip the offset you set, and it start from current position.
+

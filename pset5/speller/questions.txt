@@ -1,0 +1,46 @@
+Q0. What is pneumonoultramicroscopicsilicovolcanoconiosis?
+Ans: It is the longest word in Enginlish dictionary.
+
+Q1. According to its man page, what does getrusage do?
+Ans: getrusage() returns resource usage measures for "int who", which is RUSAGE_SELF in speller.c
+     RUSAGE_SELF: Return resource usage statistics for the calling process, which is the sum of resources used by all threads in the process.
+
+Q2. Per that same man page, how many members are in a variable of type struct rusage?
+Ans: 16. You can refer the website with http://man7.org/linux/man-pages/man2/getrusage.2.html.
+    struct rusage {
+               struct timeval ru_utime; /* user CPU time used */
+               struct timeval ru_stime; /* system CPU time used */
+               long   ru_maxrss;        /* maximum resident set size */
+               long   ru_ixrss;         /* integral shared memory size */
+               long   ru_idrss;         /* integral unshared data size */
+               long   ru_isrss;         /* integral unshared stack size */
+               long   ru_minflt;        /* page reclaims (soft page faults) */
+               long   ru_majflt;        /* page faults (hard page faults) */
+               long   ru_nswap;         /* swaps */
+               long   ru_inblock;       /* block input operations */
+               long   ru_oublock;       /* block output operations */
+               long   ru_msgsnd;        /* IPC messages sent */
+               long   ru_msgrcv;        /* IPC messages received */
+               long   ru_nsignals;      /* signals received */
+               long   ru_nvcsw;         /* voluntary context switches */
+               long   ru_nivcsw;        /* involuntary context switches */
+           };
+
+Q3. Why do you think we pass before and after by reference (instead of by value) to calculate, even though we’re not changing their contents?
+Ans: If pass large data by value. It will cause slow and take a lot of memory to copy these data to stack. It may cause stack overflow.
+
+Q4. Explain as precisely as possible, in a paragraph or more, how main goes about reading words from a file.
+    In other words, convince us that you indeed understand how that function’s for loop works.
+Ans: Use "for loop" and "fgetc()" to get each character until end of file.
+     And use "if-else if" function to sift the word we need. 
+     1. If the character is an alphabet or an apostrophe which is not at index 0 of the word, then character would add to the word array. 
+     2. Else if the character is a number, this word will be skipped ahead to the next word.
+     3. Else if we get a space or punctuation, it mean that we find one of words, so we stop and add "\0" to the word array.
+
+Q5. Why do you think we used fgetc to read each word’s characters one at a time rather than use fscanf with a format string like "%s" to read whole words at a time?
+    Put another way, what problems might arise by relying on fscanf alone?
+Ans: Because fscans() is format string, it will read until encounter space, tab or newline.
+     Using "fscans()" to read words, may cause the word(like the random word, more than 45 characters) is out of our exceptions such as segmentation fault.
+
+Q6. Why do you think we declared the parameters for check and load as const (which means "constant")?
+Ans: Because it can prevent the changes for a read word and the dictionary we are using.
